@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     InputAction moveAction;
     InputAction jumpAction;
     float verticalVelocity;
+    public bool stop = false;
 
     void Awake()
     {

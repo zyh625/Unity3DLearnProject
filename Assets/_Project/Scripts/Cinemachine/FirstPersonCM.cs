@@ -1,9 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class FirstPerson : MonoBehaviour
+public class FirstPersonCM : MonoBehaviour
 {
-    public Vector3 pos;
     [SerializeField] private Transform player;
     InputAction turnAction;
 
@@ -12,16 +11,18 @@ public class FirstPerson : MonoBehaviour
 
     private float pitch;
     private int curFrame = 2;
+    public bool stop = false;
     void Awake() => turnAction = InputSystem.actions.FindAction("Look");
     void Start() => Cursor.lockState = CursorLockMode.Locked;
     void OnEnable()
     {
-        Vector3 e = transform.eulerAngles;          // 相机此刻的朝向（第三人称留下的）
+        Vector3 e = Camera.main.transform.eulerAngles;          // 相机此刻的朝向（第三人称留下的）
         player.rotation = Quaternion.Euler(0f, e.y, 0f);   // 1. 角色转到相机的 yaw
         pitch = Mathf.DeltaAngle(0f, e.x);          // 2. 沿用俯仰角度，并把 350 换算成 -10
     }
     void LateUpdate()
     {
+        if (stop) return;
         Vector2 turn = turnAction.ReadValue<Vector2>();
         if (Cursor.lockState != CursorLockMode.Locked)
         {
@@ -35,12 +36,10 @@ public class FirstPerson : MonoBehaviour
         }
         player.Rotate(sensitivity * turn.x *
             Vector3.up, Space.World);
-        transform.position = player.rotation * pos +
-            player.position;
         pitch -= turn.y * sensitivity;
         pitch = Mathf.Clamp(pitch, -80f, 80f);
         transform.localRotation
-            = player.rotation * Quaternion.Euler(pitch, 0, 0);
+            = Quaternion.Euler(pitch, 0, 0);
 
     }
 }
