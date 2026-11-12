@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public bool faceMoveDirection = true;
     public float turnSpeed = 720f;
     public float moveSpeed = 5f;
+    public float runSpeed = 8f;
     [Header("Jump")]
     public float jumpHeight = 1.5f;
     public float gravity = -20f;
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     CharacterController cc;
     InputAction moveAction;
     InputAction jumpAction;
+    InputAction runAction;
     float verticalVelocity;
     public bool stop = false;
 
@@ -24,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         cc = GetComponent<CharacterController>();
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
+        runAction = InputSystem.actions.FindAction("Sprint");
     }
     void Update()
     {
@@ -44,7 +47,8 @@ public class PlayerMovement : MonoBehaviour
         if (cc.isGrounded && jumpAction.WasPressedThisFrame())
             verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
         verticalVelocity += gravity * Time.deltaTime;
-        moveDir *= moveSpeed;
+        bool isRunning = runAction.IsPressed();
+        moveDir *= isRunning ? runSpeed : moveSpeed;
         moveDir.y = verticalVelocity;
         cc.Move(moveDir*Time.deltaTime); 
     }
