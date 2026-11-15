@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight = 1.5f;
     public float gravity = -20f;
 
+    private Animator animator;
 
     CharacterController cc;
     InputAction moveAction;
@@ -20,9 +21,10 @@ public class PlayerMovement : MonoBehaviour
     InputAction runAction;
     float verticalVelocity;
     public bool stop = false;
-
+    float airTime = 0f;
     void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
         cc = GetComponent<CharacterController>();
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
@@ -45,11 +47,23 @@ public class PlayerMovement : MonoBehaviour
         if (cc.isGrounded && verticalVelocity < 0f)
             verticalVelocity = -2f;
         if (cc.isGrounded && jumpAction.WasPressedThisFrame())
+        {
             verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            animator.SetTrigger("JumpStarted");
+        }
         verticalVelocity += gravity * Time.deltaTime;
         bool isRunning = runAction.IsPressed();
         moveDir *= isRunning ? runSpeed : moveSpeed;
         moveDir.y = verticalVelocity;
-        cc.Move(moveDir*Time.deltaTime); 
+        cc.Move(moveDir*Time.deltaTime);
+        animator.SetBool("Grounded", cc.isGrounded);
+        airTime = cc.isGrounded ? 0f : airTime + Time.deltaTime;
+        animator.SetFloat("AirTime", airTime);
+        if (animator != null)
+        {
+            Vector3 velocity = cc.velocity;
+            velocity.y = 0;
+            animator.SetFloat("Speed", velocity.magnitude);
+        }
     }
 }
