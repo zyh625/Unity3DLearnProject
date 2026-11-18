@@ -1338,6 +1338,7 @@ GameObject:
   - component: {fileID: 1998272223}
   - component: {fileID: 1998272222}
   - component: {fileID: 1998272227}
+  - component: {fileID: 1998272230}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -1345,6 +1346,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1998272230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998272221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c99e6d9526d8a5b4fa83c824ed7d295e, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!114 &1998272222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1364,6 +1377,7 @@ MonoBehaviour:
   jumpHeight: 1.5
   gravity: -20
   stop: 0
+  maxJumpTime: 1
 --- !u!143 &1998272223
 CharacterController:
   m_ObjectHideFlags: 0
