@@ -7,6 +7,8 @@ public class PlayerAnimation : MonoBehaviour
     private PlayerMovement PM;
     public event Action LightEnd;
     public event Action<bool> LightBoxControll;
+    public event Action damageOver;
+    public event Action Death;
     private void Awake()
     {
         PM = GetComponentInParent<PlayerMovement>();
@@ -23,6 +25,14 @@ public class PlayerAnimation : MonoBehaviour
             animator.SetFloat("Speed", velocity.magnitude);
         }
     }
+    public void PlayerDied()
+    {
+        animator.SetTrigger("Dying");
+    }
+    public void PlayerAttacked()
+    {
+        animator.SetTrigger("Attacked");
+    }
     public void PlayJump()
     {
         animator.SetTrigger("JumpStarted");
@@ -32,7 +42,10 @@ public class PlayerAnimation : MonoBehaviour
     {
         animator.SetTrigger("Light");
     }
+
     private void AttackEnd() => LightEnd?.Invoke();
     private void AttackBoxOpen() => LightBoxControll?.Invoke(true);
     private void AttackBoxClose() => LightBoxControll?.Invoke(false);
+    private void DamageOver() => damageOver?.Invoke();
+    private void Dead() => Death?.Invoke();
 }

@@ -7,7 +7,6 @@ public class PlayerCombat : MonoBehaviour,IPlayerAction
     public int Priority => priority;
     public bool Processing { get; private set; }
 
-    [SerializeField] private float attackTime;
     private PlayerAnimation PA;
     private PlayerMovement PM;
     private void Awake()
@@ -25,15 +24,12 @@ public class PlayerCombat : MonoBehaviour,IPlayerAction
         PA.LightEnd -= Cancel;
         PA.LightBoxControll -= BoxControll;
     }
-    private float lastAttackTime = -1f;
     public bool LockMove => Processing;
     public bool TryStart(IActorIntent a) => !Processing && a.AttackPressed
-        && PM.OnGround && (lastAttackTime == -1f || 
-        Time.time - lastAttackTime >= attackTime);
+        && PM.OnGround;
 
     public void Begin()
     {
-        lastAttackTime = Time.time;
         Processing = true;
         PA.PlayLightAttack();
     }
@@ -44,8 +40,12 @@ public class PlayerCombat : MonoBehaviour,IPlayerAction
     }
     public void Cancel()
     {
-        lastAttackTime = -1f;
         Processing = false;
+        BoxControll(false);
     }
-    private void BoxControll(bool flag) => box.gameObject.SetActive(flag);
+    private void BoxControll(bool flag)
+    {
+        if (!Processing && flag) return;
+        box.gameObject.SetActive(flag);
+    }
 }

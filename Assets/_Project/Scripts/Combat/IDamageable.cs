@@ -4,12 +4,12 @@ public interface IDamageable
 {
     public void TakeDamage(DamageInfo damage);
 }
-public class DamageInfo
+public struct DamageInfo
 {
-    public Transform tran;
+    public Vector3 dir;
     public float attack;
-    public DamageInfo(Transform t,float a)
+    public DamageInfo(Vector3 t,float a)
     {
-        tran = t;attack = a;
+        dir = t;attack = a;
     }
 }

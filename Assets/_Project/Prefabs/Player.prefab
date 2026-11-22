@@ -91,6 +91,73 @@ MonoBehaviour:
   player: {fileID: 4638028798735761442}
   sensitivity: 0.1
   stop: 0
+--- !u!1 &3656193574851925155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4420548592996423258}
+  - component: {fileID: 7802055731826360638}
+  - component: {fileID: 2873736163686713392}
+  m_Layer: 8
+  m_Name: HandHitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4420548592996423258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3656193574851925155}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.034, y: 0.118, z: 0.025}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6820506533701342004}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7802055731826360638
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3656193574851925155}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.7084699, z: 1}
+  m_Center: {x: 1.5319106e-10, y: 0.017908772, z: -0.0000000028086586}
+--- !u!114 &2873736163686713392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3656193574851925155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe842747082946d418eaaddbe1e6dc57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Hitbox
+  attack: 10
 --- !u!1 &4520684602303751845
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,15 +199,15 @@ GameObject:
   m_Component:
   - component: {fileID: 4638028798735761442}
   - component: {fileID: 3040822988710348586}
-  - component: {fileID: 2209471429388362024}
   - component: {fileID: 4139428233306550616}
   - component: {fileID: 4141648505064339833}
   - component: {fileID: 1196127925714295864}
-  - component: {fileID: 4578235905252321077}
   - component: {fileID: 4775501667780196571}
   - component: {fileID: 7090759646465989218}
   - component: {fileID: 1586531748078147587}
   - component: {fileID: 5489869415329359944}
+  - component: {fileID: 8270798118334800696}
+  - component: {fileID: 3173161197332514608}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -174,55 +241,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7766441869412170224}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &2209471429388362024
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7766441869412170224}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!143 &4139428233306550616
 CharacterController:
   m_ObjectHideFlags: 0
@@ -241,13 +259,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 1.71
+  m_Radius: 0.16
   m_SlopeLimit: 45
   m_StepOffset: 0.4
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.22, z: 0}
 --- !u!114 &4141648505064339833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,18 +302,6 @@ MonoBehaviour:
   _camera: {fileID: 0}
   viewMode: 0
   maxCameraDis: 1
---- !u!114 &4578235905252321077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7766441869412170224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abd1dd65316b12b41bbb5cf3ef4ad82c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerKeys
 --- !u!114 &4775501667780196571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,8 +326,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b94c3e4008c146a47a15307f050c484c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCombat
+  box: {fileID: 7802055731826360638}
   priority: 30
-  attackTime: 2
 --- !u!114 &1586531748078147587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,6 +354,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerJump
   maxJumpTime: 2
   priority: 50
+--- !u!114 &8270798118334800696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7766441869412170224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fee4bd9d8447ba4888b59f0cdad931a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  beginBlood: 200
+--- !u!114 &3173161197332514608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7766441869412170224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b81240ca3897114e85c8fa518db0f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerReaction
 --- !u!1001 &5121404507960651004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -362,7 +393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0713596fc9c410b4fa454e8e7f9ce7ab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.17
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0713596fc9c410b4fa454e8e7f9ce7ab, type: 3}
       propertyPath: m_LocalPosition.z
@@ -406,13 +437,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 2e2503bcf884a954ea7cbbdc867e5d37, type: 2}
     - target: {fileID: 5866666021909216657, guid: 0713596fc9c410b4fa454e8e7f9ce7ab, type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
-        'mixamorig:LeftHandThumb2'\n\tTransform 'mixamorig:LeftHandIndex1'\n\tTransform
-        'mixamorig:LeftHandPinky2'\n\tTransform 'mixamorig:RightHandRing2'\n\tTransform
-        'mixamorig:Spine1'\n\tTransform 'mixamorig:RightArm'\n\tTransform 'mixamorig:LeftLeg'\n\tTransform
-        'mixamorig:LeftShoulder'\n\tand more ...\n\tFrom animation clip 'mixamo.com'"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 0713596fc9c410b4fa454e8e7f9ce7ab, type: 3}
       propertyPath: m_ApplyRootMotion
@@ -420,7 +445,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1852576806548013000, guid: 0713596fc9c410b4fa454e8e7f9ce7ab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4420548592996423258}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0713596fc9c410b4fa454e8e7f9ce7ab, type: 3}
       insertIndex: -1
@@ -448,3 +476,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce9595f41fbb1241a6138054502c9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimation
+--- !u!4 &6820506533701342004 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: 0713596fc9c410b4fa454e8e7f9ce7ab, type: 3}
+  m_PrefabInstance: {fileID: 5121404507960651004}
+  m_PrefabAsset: {fileID: 0}
